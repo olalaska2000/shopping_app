@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Create category</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class = "container text-center">
+  <div><h1>Create new colour</h1></div>
+
+  <form class="form-horizontal" th:action="@{/colours/save}" th:object="${colour}" method="post"
+        style="max-width:600px; margin:0 auto;">
+
+    <div class = "form-group row">
+      <label  class="col-form-label col-sm-4">Colour name:</label>
+      <div class="col-sm-8">
+        <input type="text" th:field="*{name}" class="form-control" placeholder="Name" required >
+      </div>
+      <div class = "container test-center p-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

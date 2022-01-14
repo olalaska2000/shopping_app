@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List of categories</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class = "container text-center">
+  <div><h1>Colour List</h1></div>
+  <div class = "container text-center">
+    <table class="table table-bordered table-dark">
+      <thead>
+      <tr>
+        <th>ID </th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <br>
+      <br>
+      <tbody>
+      <th:block th:each="colour: ${listColours}">
+        <tr>
+          <td>[[${colour.id}]]</td>
+          <td>[[${colour.name}]]</td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::header-html"/>
+
+<body style="background-color:  #fff6e6">
+
+<div th:replace="fragments :: menu"/>
+
+
+<div class = "container text-center">
+    <div><h1>Welcome to Olmaiz online shop!</h1></div>
+    <div class = "p-2"> <a class = "h2" th:href="@{/categories}">List categories</a></div>
+    <div>
+    <div class = "p-2"> <a class = "h2" th:href="@{/categories/new}">Create category</a></div>
+    </div>
+    <div>
+    <div class = "p-2"> <a class = "h2" th:href="@{/products}">List Products</a></div>
+    </div>
+    <div>
+    <div class = "p-2"> <a class = "h2" th:href="@{/products/new}">Create product</a></div>
+    </div>
+    <div class = "p-2"> <a class = "h2" th:href="@{/brands}">List Brands</a></div>
+    <div>
+        <div class = "p-2"> <a class = "h2" th:href="@{/brands/new}">Create brand</a></div>
+    </div>
+    <div>
+        <div class = "p-2"><a class = "h2" th:href="@{/register}">Register</a></div>
+    </div>
+    <div>
+        <div class = "p-2"><a class = "h2" th:href="@{/cart}">Cart</a></div>
+    </div>
+
+</div>
+<div th:replace="fragments :: footer">Static footer</div>
+</body>
+</html>
