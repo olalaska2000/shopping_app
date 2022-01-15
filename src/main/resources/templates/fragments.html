@@ -11,33 +11,44 @@
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <ul class="navbar-nav">
+                <div class ="container-fluid">
 
-                <span class="navbar-brand mb-0 h1">OLMAIZ</span>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">WOMEN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">MEN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="fa fa-fw fa-home" th:href="@{/}" style="font-size:24px; color:white"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="fa fa-shopping-cart" th:href="@{/}" style="font-size:24px; color:white"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="fa fa-fw fa-user" th:href="@{/}" style="font-size:24px; color:white"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="fa fa-sign-out" th:href="@{/}" style="font-size:24px; color:white"></a>
-                </li>
-                <li>
-                    <form th:action="@{/doLogout}" method="post">
-                        <input type = "submit" value="Logout">
-                    </form>
-                </li>
+                        <div class="row">
+                            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <span class="navbar-brand mb-0 h1">OLMAIZ</span>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/}">WOMEN</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/}">MEN</a>
+                                </li>
+                            </div>
 
 
+                        <div class="me-auto">
+                            <div class="navbar ">
+
+                                <li class="nav-item">
+                                    <a class="fa fa-fw fa-home" th:href="@{/}" style="font-size:24px; color:white"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="fa fa-shopping-cart" th:href="@{/cart}" style="font-size:24px; color:white"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="fa fa-fw fa-user" th:href="@{/register}" style="font-size:24px; color:white"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="fa fa-sign-out" th:href="@{/}" th:action="@{/doLogout}"  style="font-size:24px; color:white"></a>
+                                </li>
+                                <li>
+                                    <form th:action="@{/doLogout}" method="post">
+                                        <input type = "submit" value="Logout">
+                                    </form>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </ul>
         </nav>
         <title>Inventory home page</title>

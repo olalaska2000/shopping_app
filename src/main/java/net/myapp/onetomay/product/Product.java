@@ -15,11 +15,28 @@ public class Product {
     private Integer id;
     private String name;
     private float price;
-
+    private Integer quantity;
     private String size;
     private String gender;
 
+    public Integer getQuantity() {
+        return quantity;
+    }
 
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Product(Integer id, String name, float price, Integer quantity, String size, String gender, String photo, Category category) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.size = size;
+        this.gender = gender;
+        this.photo = photo;
+        this.category = category;
+    }
 
     public String getSize() {
         return size;

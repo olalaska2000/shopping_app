@@ -2,6 +2,7 @@ $(document).ready(function(){
     $(".minusButton").on("click", function(evt){
      evt.preventDefault();
      productId = $(this).attr("pid");
+     alert(productId);
      qtyInput = $("#quantity" + productId);
 
      newQty = parseInt(qtyInput.val())-1;

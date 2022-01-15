@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ShoppingCartRestController {
@@ -20,15 +18,16 @@ public class ShoppingCartRestController {
     @Autowired
     private UserService userService;
 
+
     @PostMapping("/cart/add/{pid}/{qty}")
+    //@RequestMapping(value = "/cart/add/{pid}/{qty}", method = RequestMethod.GET)
     public String addProductToCart(@PathVariable("pid") Integer productId,
                                    @PathVariable("qty") Integer quantity,
                                    @AuthenticationPrincipal Authentication authentication){
+
         System.out.println("add to cart: " + productId + " - " + quantity);
 
-        if(authentication == null || authentication instanceof AnonymousAuthenticationToken){
-            return "You must login to add this product to your shopping cart.";
-        }
+       System.out.println("logged: " + userService.getCurrentlyLoggedUser(authentication).getFirstName());
         User user =  userService.getCurrentlyLoggedUser(authentication);
 
         if(user ==null){

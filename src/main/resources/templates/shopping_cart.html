@@ -26,7 +26,7 @@
         <div class="row m-1">
           <div class ="col-sm-8">
             <th:block th:each="item,status: ${cartItems}">
-              <div class="row border rounded" th:with="product = ${item.product}">
+              <div class="row border rounded" th:with="product = ${item.product}" th:productId="${item.product.id}">
                 <div class="col-1">
                   <div>[[${status.count}]]</div>
                   <div> <a th:href="@{/cart}"><i class="fa-trash" ></i></a></div>
@@ -73,11 +73,7 @@
       <div th:if="${#lists.isEmpty(cartItems)}">
         <h3>Your have not chosen any products yet.</h3>
       </div>
-<script type="text/javascript">
-      contextPath = "[[@{/}]]";
-      var csrfHeaderName = "[[${_csrf.headerName}]]";
-      var csrfValue = "[[${_csrf.token}]]";
-</script>
+
 
         <script th:src="shopping_cart.js"></script>
       </body>

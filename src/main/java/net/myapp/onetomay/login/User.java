@@ -1,10 +1,17 @@
 package net.myapp.onetomay.login;
 
+import net.myapp.onetomay.roles.Role;
+import org.hibernate.annotations.ManyToAny;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name="users")
 public class User {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -20,6 +27,14 @@ public class User {
 
     @Column(nullable = false, length =20)
     private String lastName;
+
+     @ManyToMany(fetch = FetchType.EAGER)
+     @JoinTable(
+             name="users_role",
+             joinColumns = @JoinColumn(name = "user_id"),
+             inverseJoinColumns = @JoinColumn(name = "role_id")
+     )
+    private Set<Role> roles = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -71,5 +86,30 @@ public class User {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role){
+        this.roles.add(role);
+    }
+    public String getFullName(){
+        return this.getFirstName() + "" + this.getLastName();
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities(){
+        Set<Role> roles = this.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for(Role role : roles){
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return authorities;
     }
 }

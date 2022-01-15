@@ -5,21 +5,24 @@ $(document).ready(function(){
 });
 
 function addToCart(){
-      var productId = "[[${product.id}]]";
-      var contextPath = "[[@{/}]]";
-      var csrfHeaderName = "[[${_csrf.headerName}]]";
-      var csrfValue = "[[${_csrf.token}]]";
+    var contextPath = "/";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+     var productId = $(this).attr("productId");
 
-    quantity = $("#quantity" + productId).val();
+     var quantity = $("#quantity" + productId).val();
     alert(quantity);
-    url = contextPath + "cart/add/" + productId + "/" + quantity;
+    let url = "http://localhost:8080/cart/add/" + productId + "/" + quantity;
+    alert(csrfHeaderName + productId);
+    $.ajaxSetup({
+        headers:
+            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+    });
 
     $.ajax({
-    type: "POST",
-    url: url,
-                beforeSend: function(xhr){
-                xhr.setRequestHeader(csrfHeaderName, csrfValue);
-                }
+    method: "POST",
+    url: url
+
     }).done(function(response){
     $("#modalTitle").text("Shopping Cart");
     $("#modalBody").text(response);
