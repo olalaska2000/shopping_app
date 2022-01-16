@@ -17,7 +17,8 @@ public class LoginController {
     @Autowired
     private UserRepository repo;
 
-
+    @Autowired
+    private UserService service;
 
     @GetMapping("/register")
     public String showSignUpForm(Model model){
@@ -27,10 +28,7 @@ public class LoginController {
 
     @PostMapping("/process_register")
     public String processRegistration(User user){
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        String encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        repo.save(user);
+       service.saveUserWithDefaultRole(user);
         return "register_success";
     }
     @GetMapping("/users")
@@ -42,7 +40,9 @@ public class LoginController {
     }
 
     @GetMapping("/list_users")
-    public String viewUsers(){
+    public String viewUsers(Model model){
+        List<User> listUsers = service.listAll();
+        model.addAttribute("listUsers", listUsers);
         return "users";
     }
 

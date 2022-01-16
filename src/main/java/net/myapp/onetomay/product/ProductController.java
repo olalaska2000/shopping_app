@@ -106,5 +106,10 @@ public class ProductController {
         return "product_detail";
     }
 
+    @GetMapping("/403")
+    public String error403(){
+        return "403";
+    }
+
 
 }

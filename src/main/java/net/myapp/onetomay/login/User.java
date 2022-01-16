@@ -6,12 +6,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable{
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -103,13 +105,5 @@ public class User {
         return this.getFirstName() + "" + this.getLastName();
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities(){
-        Set<Role> roles = this.getRoles();
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-        for(Role role : roles){
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return authorities;
-    }
 }

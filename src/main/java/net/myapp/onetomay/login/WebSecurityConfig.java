@@ -55,18 +55,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/users","/cart/*","/cart", "/products/new").authenticated()
+                .antMatchers("/users","/products/new").hasAuthority("Admin")
+                .antMatchers("/cart/*","/cart").hasAuthority("User")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .usernameParameter("email")
-                .defaultSuccessUrl("/users")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
                 .logoutUrl("/doLogout")
-                .permitAll();
+                .permitAll()
+                .and().exceptionHandling().accessDeniedPage("/403");
 
 
     }
