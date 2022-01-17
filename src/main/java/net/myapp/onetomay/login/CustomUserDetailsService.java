@@ -14,12 +14,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findByEmail(username);
+        User user = findUser(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
         return new CustomUserDetails(user);
     }
+
+    public User findUser (String username) {
+        return userRepo.findByEmail(username);
+    }
+
 
 
     public User getCurrentlyLoggedUser(Authentication authentication) {
