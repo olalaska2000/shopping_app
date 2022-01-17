@@ -22,5 +22,7 @@ public class CategoryRepositoryTests {
     public void testCreateCategory(){
         Category savedCategory = repo.save(new Category("Library"));
         assertThat(savedCategory.getId()).isGreaterThan(0);
+
+
     }
 }
