@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <meta charset="ISO-8859-1">
-    <title>Title</title>
+
 
     <div th:fragment="menu">
 
@@ -35,13 +35,17 @@
                                     <a class="fa fa-shopping-cart" th:href="@{/cart}" style="font-size:24px; color:white"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="fa fa-fw fa-user" th:href="@{/register}" style="font-size:24px; color:white"></a>
+                                    <a class="fa fa-fw fa-user" th:href="@{/users}" style="font-size:24px; color:white"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="fa fa-sign-out" th:href="@{/}" th:action="@{/doLogout}"  style="font-size:24px; color:white"></a>
+                                    <a class="fa fa-user-plus" th:href="@{/register}" style="font-size:24px; color:white"></a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="fa fa-sign-out" th:href="@{/login}" th:action="@{/login}"  style="font-size:24px; color:white"></a>
+                                </li>
+
                                 <li>
-                                    <form th:action="@{/doLogout}" method="post">
+                                    <form th:action="@{/login}" method="post">
                                         <input type = "submit" value="Logout">
                                     </form>
                                 </li>
@@ -75,9 +79,63 @@
         </div>
     </div>
 
-    <div th:fragment="footer" class="text-center">
-        <p>Olmaiz Admin Control panel - Copyright &copy; Olmaiz</p>
-    </div>
+    <div th:fragment="footer">
+
+
+            <footer class="mt-auto" style="background-color: #fff6e6;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <h5 class="mb-3" style="letter-spacing: 2px; color: #0d0d0d;">Olmaiz company</h5>
+                            <p>
+                                Olmaiz ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+                                molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
+                                voluptatem veniam, est atque cumque eum delectus sint!
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <h5 class="mb-3" style="letter-spacing: 2px; color: #0d0d0d;">links</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1">
+                                    <a href="#!" style="color: #0d0d0d;">Frequently Asked Questions</a>
+                                </li>
+                                <li class="mb-1">
+                                    <a href="#!" style="color: #0d0d0d;">Delivery</a>
+                                </li>
+                                <li class="mb-1">
+                                    <a href="#!" style="color: #0d0d0d;">Pricing</a>
+                                </li>
+                                <li>
+                                    <a href="#!" style="color: #0d0d0d;">Where we deliver?</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <h5 class="mb-1" style="letter-spacing: 2px; color: #0d0d0d;">opening hours</h5>
+                            <table class="table" style="color: #0d0d0d; border-color: #0d0d0d;">
+                                <tbody>
+                                <tr>
+                                    <td>Mon - Fri:</td>
+                                    <td>8am - 9pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Sat - Sun:</td>
+                                    <td>8am - 1am</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center p-3" style="background-color: #ccc5ba;">
+                     @2020 Copyright:
+                    <a class="text-dark" href="https://localhost:8080">olmaiz-shop.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+
+
+
 </head>
 <body>
 
