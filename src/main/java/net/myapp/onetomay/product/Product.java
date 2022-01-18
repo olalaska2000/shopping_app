@@ -1,7 +1,9 @@
 package net.myapp.onetomay.product;
 
+import net.myapp.onetomay.cartItem.CartItem;
 import net.myapp.onetomay.category.Category;
 import net.myapp.onetomay.color.Colour;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.awt.*;
@@ -55,8 +57,7 @@ public class Product {
     }
 
 
-
-    public Product(Integer id, String name, float price,   String size, String gender, String photo, Category category) {
+    public Product(Integer id, String name, float price, String size, String gender, String photo, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -68,7 +69,7 @@ public class Product {
         this.category = category;
     }
 
-    public Product(Integer id, String name, float price,  String photo, Category category) {
+    public Product(Integer id, String name, float price, String photo, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -99,9 +100,8 @@ public class Product {
         this.name = name;
         this.price = price;
         this.category = category;
-        this.photo=photo;
+        this.photo = photo;
     }
-
 
 
     public String getPhoto() {
@@ -123,8 +123,8 @@ public class Product {
     public Product() {
     }
 
-    public void setDetail(Integer id, String name, String value){
-        this.details.add(new ProductDetails(id, name,value, this));
+    public void setDetail(Integer id, String name, String value) {
+        this.details.add(new ProductDetails(id, name, value, this));
     }
 
     public Integer getId() {
@@ -159,8 +159,31 @@ public class Product {
         this.category = category;
     }
 
-    public void addDetail(String name, String value){
+    public void addDetail(String name, String value) {
         this.details.add(new ProductDetails(name, value, this));
     }
 
+    public boolean isProduct() {
+        if (this.id != null) {
+            System.out.println("The product doesn't exist");
+            return false;
+        } else {
+            System.out.println("Product exists");
+            return true;
+        }
+    }
+
+
+    public boolean isExistInBasket() {
+        if (this.isProduct()) {
+            CartItem cartItem = new CartItem();
+            System.out.println("Product added to cart");
+            return true;
+        } else {
+            System.out.println("Product can be added");
+            return false;
+        }
+
+    }
 }
+
