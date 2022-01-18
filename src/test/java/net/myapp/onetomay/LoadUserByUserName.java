@@ -1,13 +1,14 @@
 package net.myapp.onetomay;
+
 import net.myapp.onetomay.login.CustomUserDetailsService;
 import net.myapp.onetomay.login.User;
-import net.myapp.onetomay.product.Product;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.mockito.Mockito;
 
-public class Tests {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+public class LoadUserByUserName {
 
     @Test
     public void testLoadUserByUserName() {
@@ -27,21 +28,5 @@ public class Tests {
 
         Mockito.doReturn(user2).when(cusSpy).findUser("Wiktor");
         assertNotEquals("123", cusSpy.loadUserByUsername("Wiktor").getPassword());
-    }
-
-    @Test
-    public void testAddDetailToProduct(){
-        Product product = new Product();
-
-        assertEquals(0,product.getDetails().size());
-
-        product.addDetail("jeans", "34");
-
-        assertEquals(1,product.getDetails().size());
-
-        assertEquals("jeans",product.getDetails().get(0).getName());
-        assertEquals("34",product.getDetails().get(0).getValue());
-
-        assertNotEquals(2,product.getDetails().size());
     }
 }
