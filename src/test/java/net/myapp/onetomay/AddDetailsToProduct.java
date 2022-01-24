@@ -13,6 +13,7 @@ public class AddDetailsToProduct {
         Product product = new Product();
         product.addDetail("jeans", "34");
 
+
         assertEquals("jeans",product.getDetails().get(0).getName());
         assertEquals("34",product.getDetails().get(0).getValue());
     }
