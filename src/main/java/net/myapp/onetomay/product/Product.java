@@ -160,7 +160,13 @@ public class Product {
     }
 
     public void addDetail(String name, String value){
-        this.details.add(new ProductDetails(name, value, this));
+        //if (name == null || value == null)
+            this.details.add(new ProductDetails(name, value, this));
+    }
+
+    public void addDetail(ProductDetails detail){
+        if (detail != null)
+            this.details.add(detail);
     }
 
 }
